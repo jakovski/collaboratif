@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"   
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+<html     xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
       >
     <body>
 	    <ui:composition>
- 
-		<h1>This is default content</h1>
+ <h:outputLabel value="liste des derniers projets : "/>
+		<h:form>  
+    <p:dataTable var="car"  >  
+        <p:column headerText="Projet">  
+            <h:outputText value="nom projet" />  
+        </p:column>  
+  
+        <p:column headerText="date creation" style="width: 20%;">  
+            <h:outputText value="creele" />  
+        </p:column>  
+  
+        <p:column headerText="cree par" style="width: 30%;">  
+            <h:outputText value="nom user" />  
+        </p:column>  
+   
+    </p:dataTable>  
+</h:form> 
  
 	    </ui:composition>
     </body>

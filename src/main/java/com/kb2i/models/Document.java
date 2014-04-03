@@ -5,8 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -28,7 +32,11 @@ public class Document implements Serializable {
 	@Column(name="DATE_AJOUT")
 	private Date date_ajout;
 	
-	private Membre ajoutpar;
+	@ManyToOne(fetch=FetchType.LAZY,optional=false)
+	@JoinColumns({
+	@JoinColumn(name="USER_ID",referencedColumnName="USER_ID"),
+	@JoinColumn(name="PROJECT_ID",referencedColumnName="PROJECT_ID")})
+	private Membre membre;
 
 	public int getId_document() {
 		return id_document;
@@ -60,11 +68,11 @@ public class Document implements Serializable {
 	public void setDate_ajout(Date date_ajout) {
 		this.date_ajout = date_ajout;
 	}
-	public Membre getAjoutpar() {
-		return ajoutpar;
+	public Membre getMembre() {
+		return membre;
 	}
-	public void setAjoutpar(Membre ajoutpar) {
-		this.ajoutpar = ajoutpar;
+	public void setMembre(Membre membre) {
+		this.membre = membre;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.kb2i.managed;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -19,6 +20,12 @@ public class UserBean implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String nom;
+	private String prenom;
+	private String email;
+	private String adresse;
+	private String telephone;
+	private Date datenaissance;
 	private String login;
 	private String password;
 	
@@ -27,6 +34,42 @@ public class UserBean implements Serializable{
 	
 	
 	
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public Date getDatenaissance() {
+		return datenaissance;
+	}
+	public void setDatenaissance(Date datenaissance) {
+		this.datenaissance = datenaissance;
+	}
 	public String getLogin() {
 		return login;
 	}
@@ -45,15 +88,26 @@ public class UserBean implements Serializable{
 	public void setUserServices(UserServices userServices) {
 		this.userServices = userServices;
 	}
+
+	public void ajouteruser(){
+		User user= new User();
+		user.setNom(nom);
+		user.setPrenom(prenom);
+		user.setEmail(email);
+		user.setAdresse(adresse);
+		user.setTelephone(telephone);
+		user.setDate_naissance(datenaissance);
+		user.setDate_creation();
+		user.setLogin(login);
+		user.setPassword(password);
+		userServices.saveUser(user);	
+		}
 	
-	public String afficher(){
+	public String connecter(){
 		
-		User user=(User) userServices.getUserById(2);
-		
-		System.out.println(userServices.getUserById(1).getLogin());
-		
-		if(user.getLogin().equals(login) && user.getPassword().equals(password))
-		{return "success";}
+		if(userServices.getUserByLoginPassword(login, password) != null){
+		return "success";}
+	
 		return "error";
 	}
 	

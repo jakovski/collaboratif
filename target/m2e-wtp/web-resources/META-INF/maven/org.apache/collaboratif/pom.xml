@@ -45,12 +45,13 @@
   	 	<version>2.1.7</version>
   	</dependency>
     
-   <dependency>
-        <groupId>org.primefaces</groupId>
-        <artifactId>primefaces</artifactId>
-		<version>4.0</version>
-   </dependency>    
-       
+   <dependency>  
+    <groupId>org.primefaces</groupId>  
+    <artifactId>primefaces</artifactId>  
+    <version>4.0</version>  
+	</dependency> 
+      
+   
     <dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>

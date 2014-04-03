@@ -7,35 +7,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="configprojet")
-public class Configprojet implements Serializable{
+@Table(name="projectConfig")
+public class ProjectConfig implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_configprojet")
-	private int id_configprojet;
-	@Column(name="partagefichier")
+	@Column(name="ID_PROJECTCONFIG")
+	private int id_projectConfig;
+	@Column(name="PARTAGE_FICHIER")
 	private boolean partagefichier;
-	@Column(name="partagedocument")
+	@Column(name="PARTAGE_DOCUMENET")
 	private boolean partagedoc;
-	@Column(name="assigndemande")
+	@Column(name="ASSIGN_DEMANDE")
 	private boolean assigndemande;
-	@Column(name="news")
+	@Column(name="NEWS")
 	private boolean news;
+	@ManyToOne
+	@JoinColumn(name="PROJECT_STATUT",insertable=false, updatable=false)
+	private ProjectStatut projectStatut;
 	
-	
-	private Project project;
+
 /*********************************************************************/
 	
-	public int getId_configprojet() {
-		return id_configprojet;
+	public int getIdprojectConfig() {
+		return id_projectConfig;
 	}
-	public void setId_configprojet(int id_configprojet) {
-		this.id_configprojet = id_configprojet;
+	public void setIdprojectConfig(int id_projectConfig) {
+		this.id_projectConfig = id_projectConfig;
 	}
 	public boolean isPartagefichier() {
 		return partagefichier;
@@ -61,13 +65,11 @@ public class Configprojet implements Serializable{
 	public void setNews(boolean news) {
 		this.news = news;
 	}
-	
-	@OneToOne(mappedBy="config")
-	public Project getProject() {
-		return project;
+	public ProjectStatut getProjectStatut() {
+		return projectStatut;
 	}
-	public void setProject(Project project) {
-		this.project = project;
+	public void setProjectStatut(ProjectStatut projectStatut) {
+		this.projectStatut = projectStatut;
 	}
 	
 }

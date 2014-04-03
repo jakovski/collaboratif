@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+<ui:composition template="/templates/layout.xhtml" >
+<ui:define name="content">
+<div>
+<h:form id="listemembre">  
+    <p:dataTable var="car" value="">  
+        <p:column headerText="Membre ">  
+          <h:outputText value="" />  
+        </p:column>  
+  
+        <p:column headerText="Role">  
+            <h:outputText value="" />  
+        </p:column>  
+  
+        <p:column headerText="gestion">  
+            <h:outputText value="" />  
+        </p:column>   
+    </p:dataTable>  
+</h:form>  
+</div >   
+<h:form>
+<h:outputText value="Liste des utilisateur :" />
+
+ <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
+   		
+   		<h:outputText value="Users :  " />  
+        <p:selectManyCheckbox id="users" value="#{projectBean.selectedusers}" layout="grid" columns="3">  
+           <f:selectItems value="#{projectBean.users}"/>
+         </p:selectManyCheckbox>  
+   		
+        <h:outputText value="Roles :  " /> 
+        <p:selectManyCheckbox id="rolesmember" value="#{projectBean.selectedroles}" layout="grid" columns="3">  
+           <f:selectItems value="#{projectBean.rolesmember}"/>
+         </p:selectManyCheckbox>  
+       
+    	</h:panelGrid>
+    <p:separator />  
+  
+    <p:commandButton value="ajouter" update="display" oncomplete="PF('dlg').show()" />  
+   <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">  
+        <p:outputPanel id="display">  
+            <p:dataList value="#{projectBean.selectedroles}" var="selection">  
+                #{selection}  
+            </p:dataList>  
+        </p:outputPanel>  
+    </p:dialog> 
+    
+</h:form>       
+</ui:define>
+</ui:composition>
+</h:body>
+</html>
+
+
+

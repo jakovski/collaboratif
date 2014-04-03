@@ -42,8 +42,9 @@ public class Project implements Serializable{
 	private boolean visibilite;
 	@OneToMany(mappedBy="project")	
 	private Set<Membre> listmembres= new HashSet<Membre>(0);
-	
-	private Configprojet config;
+	@OneToOne
+	@JoinColumn(name="ID_PROJECTCONFIG")
+	private ProjectConfig projectConfig;
 	
 	/*	@Column(name="SOUSPROJET")
 	private java.util.List<Project> listprojets;
@@ -124,13 +125,11 @@ public class Project implements Serializable{
 		this.projetparent = projetparent;
 	}
 */	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="CONFIG_FK")
-	public Configprojet getConfig() {
-		return config;
+	public ProjectConfig getProjectConfig() {
+		return projectConfig;
 	}
-	public void setConfig(Configprojet config) {
-		this.config = config;
+	public void setProjectConfig(ProjectConfig projectConfig) {
+		this.projectConfig = projectConfig;
 	}
 	
 }

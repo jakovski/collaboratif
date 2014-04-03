@@ -1,5 +1,5 @@
-menu1 li{
-	display:inline;
-    float:right;
-    color: green;  	
+.ui-menubar, .ui-menu-child {
+    background: #004e8e !important;
+    margin-left: 50px;
+    background-color: #fff!important;
 }

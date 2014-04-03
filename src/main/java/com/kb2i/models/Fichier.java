@@ -1,16 +1,45 @@
 package com.kb2i.models;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="fichier")
 public class Fichier {
 	
-	private int id_fichier;
-	private String nom_fichier;
-	private String description;
-	private String context;
-	private Date date_ajout;
-	private int ajoutpar;
 	
+	@Id
+	@GeneratedValue
+	@Column(name="ID_FICHIER")
+	private int id_fichier;
+	@Column(name="NOM_FICHIER")
+	private String nom_fichier;
+	@Column(name="DESCRIPTION")
+	private String description;
+	@Column(name="CONTEXT")
+	private String context;
+	@Column(name="DATE_AJOUT")
+	private Date date_ajout;
+	@ManyToOne(fetch=FetchType.LAZY,optional=false)
+	@JoinColumns({
+	@JoinColumn(name="USER_ID",referencedColumnName="USER_ID"),
+	@JoinColumn(name="PROJECT_ID",referencedColumnName="PROJECT_ID")})
+	private Membre membre;
+	@OneToMany(mappedBy="fichier")
+	private Set<Demande> demandes = new HashSet<Demande>();
+/****************************************************************************************/
 	public int getId_fichier() {
 		return id_fichier;
 	}
@@ -41,10 +70,10 @@ public class Fichier {
 	public void setDate_ajout(Date date_ajout) {
 		this.date_ajout = date_ajout;
 	}
-	public int getAjoutpar() {
-		return ajoutpar;
+	public Membre getMembre() {
+		return membre;
 	}
-	public void setAjoutpar(int ajoutpar) {
-		this.ajoutpar = ajoutpar;
+	public void setMembre(Membre membre) {
+		this.membre = membre;
 	}
 }

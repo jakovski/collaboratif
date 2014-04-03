@@ -2,16 +2,11 @@ package com.kb2i.models;
 
 public class MembreRole {
 	
-	private int id_membrerole;
+	
 	private int id_membre;
 	private int id_role;
 	
-	public int getId_membrerole() {
-		return id_membrerole;
-	}
-	public void setId_membrerole(int id_membrerole) {
-		this.id_membrerole = id_membrerole;
-	}
+	
 	public int getId_membre() {
 		return id_membre;
 	}

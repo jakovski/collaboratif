@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+<ui:composition template="/templates/layout.xhtml" >
+<ui:define name="content">
+ <h:form id="formconnexion" >
+<h:panelGrid columns="2" style="margin-bottom:10px">
+
+<h:outputLabel for="nom" value="nom : "/>
+<h:inputText id="nom" value="#{userBean.nom}"/> 
+<h:outputLabel for="prenom" value="prenom : "/>
+<h:inputText id="prenom"  value="#{userBean.prenom}"/> 
+<h:outputLabel for="email" value="email : "/>
+<h:inputText id="email" value="#{userBean.email}"/> 
+<h:outputLabel for="addresse" value="Adresse : "/>
+<h:inputText id="adresse" value="#{userBean.adresse}"/> 
+<h:outputLabel for="telephone" value="Numero telephone : "/>
+<h:inputText id="telephone" value="#{userBean.telephone}"/> 
+<h:outputLabel for="datenaiss" value="Date Naissance : "/>
+<p:calendar id="datenaiss" pattern="dd/MM/yyyy" mode="popup" style="width: 10px;" value="#{userBean.datenaissance}"/>  
+<h:outputLabel for="login" value="Login : "/>
+<h:inputText id="login" value="#{userBean.login}"/> 
+<h:outputLabel for="password" value="Password"/>
+<h:inputSecret id="password" value="#{userBean.password}"/> 
+</h:panelGrid>
+<h:commandButton type="submit" value="connexion" action="#{userBean.ajouteruser}" />
+</h:form>
+</ui:define>
+</ui:composition>
+</h:body>
+</html>
+
+
+

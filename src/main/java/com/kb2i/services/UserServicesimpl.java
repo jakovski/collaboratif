@@ -39,6 +39,9 @@ public class UserServicesimpl implements UserServices,Serializable{
 		public void setUserDao(UserDao userDao) {
 			this.userDao = userDao;
 		}
-	
-	
+		
+		public User getUserByLoginPassword(String login, String password){			
+		
+			return userDao.getUserByLoginPassword(login, password);
+		}
 }

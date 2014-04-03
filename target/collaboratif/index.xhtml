@@ -5,17 +5,25 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
-
+<h:head>
+</h:head>
 <h:body>
-<h:form id="formconnexion" >
-<h:panelGrid columns="2" style="margin-bottom:10px">
-<h:outputLabel for="login" value="Login"/>
-<h:inputText id="login" value="#{userBean.login}"/> 
-<h:outputLabel for="password" value="Password"/>
-<h:inputSecret id="password" value="#{userBean.password}"/> 
-</h:panelGrid>
-<h:commandButton type="submit" value="connexion" action="#{userBean.afficher}"/>
-</h:form>
+<ui:composition template="/templates/layout.xhtml">
+<ui:define name="content">
+<h1>liste des derniers projets</h1>
+<h:form>  
+  
+    <p:growl id="messages"/>  
+    <p:splitButton value="Save"  update="messages" icon="ui-icon-disk">  
+        <p:menuitem value="Update"  update="messages" icon="ui-icon-arrowrefresh-1-w"/>  
+        <p:menuitem value="Delete"  ajax="false" icon="ui-icon-close"/>  
+        <p:separator />  
+        <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>  
+    </p:splitButton>  
+  
+</h:form>  
+</ui:define>           
+</ui:composition>
 </h:body>
 </html>
 
